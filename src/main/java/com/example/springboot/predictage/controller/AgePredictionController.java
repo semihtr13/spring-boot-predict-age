@@ -1,4 +1,4 @@
-package com.example.springboot.predictage;
+package com.example.springboot.predictage.controller;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
