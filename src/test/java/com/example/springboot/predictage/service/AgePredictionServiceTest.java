@@ -23,8 +23,7 @@ class AgePredictionServiceTest {
 	@Test
 	void whenPredictAgeByNameCalledWithValidRequest_ItShouldReturnValidAgePredictionDto() {
 		 String name = "semih";
-		 AgePredictionDto agePredictionDto = AgePredictionDto.builder()
-				 											 .name("Semih")
+		 AgePredictionDto agePredictionDto = AgePredictionDto.builder()				 											 .name("Semih")
 				 											 .age(39)
 				 											 .count(15724)
 				 											 .countryId(null)
@@ -39,7 +38,7 @@ class AgePredictionServiceTest {
 	}
 	
 	@Test
-	void whenPredictAgeByNameAndCountryIdWithValidRequest_ItShuldReturnValidAgePredictionDto() {
+	void whenPredictAgeByNameAndCountryIdWithValidRequest_ItShouldReturnValidAgePredictionDto() {
 		String name = "semih";
 		String countryId = "TR";
 		AgePredictionDto agePredictionDto = AgePredictionDto.builder()
