@@ -1,23 +1,35 @@
 package com.example.springboot.predictage.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.example.springboot.predictage.dto.AgePredictionDto;
 import com.example.springboot.predictage.feign.AgePredictionClientService;
 
+@ExtendWith(MockitoExtension.class)
 class AgePredictionServiceTest {
 
-	private AgePredictionService agePredictionService;
+	@Mock
 	private AgePredictionClientService agePredictionClientService;
+	
+	@InjectMocks
+	private AgePredictionService agePredictionService;
+	
 
 	@BeforeEach
 	void setUp() throws Exception {
-		agePredictionClientService= mock(AgePredictionClientService.class);
-		agePredictionService = new AgePredictionService(agePredictionClientService);
+//		MockitoAnnotations.openMocks(this).close();
+//		agePredictionClientService= mock(AgePredictionClientService.class);
+//		agePredictionService = new AgePredictionService(agePredictionClientService);
 	}
 
 	@Test
@@ -34,7 +46,7 @@ class AgePredictionServiceTest {
 		AgePredictionDto result = agePredictionService.predictAgeByName(name);
 		
 		assertEquals(agePredictionDto, result);
-		verify(agePredictionClientService).predictAgeByName(name);
+		verify(agePredictionClientService,times(1)).predictAgeByName(name);
 	}
 	
 	@Test
