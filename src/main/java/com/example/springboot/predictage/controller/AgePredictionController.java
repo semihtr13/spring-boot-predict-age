@@ -21,8 +21,12 @@ public class AgePredictionController {
 	private static final String HEADER_X_RATE_RESET_NAME = "X-Rate-Reset-Name";
 	private static final Integer HEADER_X_RATE_RESET_VALUE = 1528;
 
+	private final AgePredictionService agePredictionService;
+
 	@Autowired
-	private AgePredictionService agePredictionService;
+	public AgePredictionController(AgePredictionService agePredictionService) {
+		this.agePredictionService = agePredictionService;
+	}
 
 	@GetMapping
 	public ResponseEntity<AgePredictionDto> predictAgeByNameAndCountryId(@RequestParam(name = "name") String name,

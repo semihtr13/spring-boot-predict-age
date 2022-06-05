@@ -9,8 +9,12 @@ import com.example.springboot.predictage.feign.AgePredictionClientService;
 @Service
 public class AgePredictionService {
 
+	private final AgePredictionClientService agePredictionClientService;
+	
 	@Autowired
-	private AgePredictionClientService agePredictionClientService;
+	public AgePredictionService(AgePredictionClientService agePredictionClientService) {
+		this.agePredictionClientService = agePredictionClientService;
+	}
 
 	public AgePredictionDto predictAgeByName(String name) {
 		return agePredictionClientService.predictAgeByName(name);
